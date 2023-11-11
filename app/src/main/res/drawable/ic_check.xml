@@ -22,14 +22,12 @@
   ~ SOFTWARE.
   -->
 
-<resources>
-    <string name="app_name">Foodium</string>
-    <string name="text_no_connectivity">No Connection</string>
-    <string name="text_connectivity">Back Online</string>
-    <string name="text_post_header">Post Header</string>
-    <string name="exit_dialog_message">Are you sure want to exit?</string>
-    <string name="exit_dialog_title">Exit?</string>
-    <string name="option_yes">Yes</string>
-    <string name="option_no">No</string>
-    <string name="share_message">\"%s\" by %s. \nVisit: https://github.com/PatilShreyas/Foodium</string>
-</resources>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24.0"
+    android:viewportHeight="24.0">
+    <path
+        android:fillColor="#FF000000"
+        android:pathData="M9,16.17L4.83,12l-1.42,1.41L9,19 21,7l-1.41,-1.41z" />
+</vector>
