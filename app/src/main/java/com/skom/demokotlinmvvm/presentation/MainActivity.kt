@@ -8,12 +8,15 @@ import android.os.Bundle
 import android.view.View
 import androidx.activity.viewModels
 import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
 import androidx.lifecycle.lifecycleScope
 import androidx.lifecycle.repeatOnLifecycle
 import com.skom.demokotlinmvvm.R
 import com.skom.demokotlinmvvm.databinding.ActivityMainBinding
 import com.skom.demokotlinmvvm.utils.NetworkUtils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
 
 @AndroidEntryPoint
@@ -45,22 +48,33 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
-    private fun observeArticles() {
-        lifecycleScope.launch {
-            repeatOnLifecycle(Lifecycle.State.STARTED) {
-                mViewModel.articles.collect { list ->
-                    try{
-                        mAdapter.submitList(list)
-                        mBinding.swipeRefreshLayout.isRefreshing = false
 
-                    }catch (e:Exception){
-                        e.printStackTrace()
-                        mBinding.swipeRefreshLayout.isRefreshing = false
-                    }
+    private fun observeArticles() {
+        mViewModel.spinner.map { show ->
+            mBinding.swipeRefreshLayout.isRefreshing = show
+        }.launchIn(lifecycleScope)
+
+        lifecycleScope.launch {
+//            repeatOnLifecycle(Lifecycle.State.STARTED) {
+//                mViewModel.articles.collect { list ->
+//                    try{
+//                        mAdapter.submitList(list)
+//                        mBinding.swipeRefreshLayout.isRefreshing = false
+//
+//                    }catch (e:Exception){
+//                        e.printStackTrace()
+//                        mBinding.swipeRefreshLayout.isRefreshing = false
+//                    }
+//                }
+//            }
+
+            mViewModel.articles.flowWithLifecycle(lifecycle, Lifecycle.State.STARTED)
+                .collect { list ->
+                    mAdapter.submitList(list)
                 }
-            }
         }
     }
+
     private fun handleNetworkChanges() {
         NetworkUtils.getNetworkLiveData(applicationContext).observe(this) { isConnected ->
             if (!isConnected) {
