@@ -7,8 +7,10 @@ import androidx.recyclerview.widget.ListAdapter
 import com.skom.demokotlinmvvm.R
 import com.skom.demokotlinmvvm.domain.Article
 
-class ArticlesAdapter(private val articles: List<Article>) :
+class ArticlesAdapter() :
     ListAdapter<Article, ArticleViewHolder>(DIFF_CALLBACK) {
+
+
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -19,12 +21,12 @@ class ArticlesAdapter(private val articles: List<Article>) :
     }
 
     override fun onBindViewHolder(holder: ArticleViewHolder, position: Int) {
-        val article = articles[position]
+        val article = currentList[position]
         holder.bind(article)
     }
 
     override fun getItemCount(): Int {
-        return articles.size
+        return currentList.size
     }
 
     companion object {

@@ -3,16 +3,17 @@ plugins {
     alias(libs.plugins.com.android.application)
     alias(libs.plugins.org.jetbrains.kotlin.android)
     alias(libs.plugins.org.jetbrains.kotlin.kapt)
+    alias(libs.plugins.com.google.dagger.hilt.android)
 }
 
 android {
     namespace = "com.skom.demokotlinmvvm"
-    compileSdk = 33
+    compileSdk = 34
 
     defaultConfig {
         applicationId = "com.skom.demokotlinmvvm"
         minSdk = 24
-        targetSdk = 33
+        targetSdk = 34
         versionCode = 1
         versionName = "1.0"
 
@@ -38,21 +39,20 @@ android {
         jvmTarget = "1.8"
     }
 }
-
+kapt {
+    correctErrorTypes = true
+}
 dependencies {
 
     implementation(libs.core.ktx)
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.constraintlayout)
-    implementation(libs.roomKtx)
-    implementation(libs.roomRuntime)
     implementation(libs.retrofit)
-    implementation(libs.daggerHilt)
     //Hilt
+    implementation(libs.daggerHilt)
     implementation(libs.hiltAndroid)
     kapt(libs.hiltCompiler)
-    implementation(libs.hiltViewModel)
     //Moshi
     implementation(libs.moshi)
     implementation(libs.moshiRetrofitConverter)
@@ -62,9 +62,15 @@ dependencies {
     implementation(libs.coil)
     implementation(libs.materialDesign)
     implementation(libs.swipeRefreshLayout)
+    implementation(libs.materialDialog)
 
-    testImplementation(libs.room)
+    implementation(libs.roomRuntime)
+    implementation(libs.roomKtx)
+    kapt(libs.roomCompiler)
+
+
     testImplementation(libs.junit)
+    testImplementation(libs.room)
 
     androidTestImplementation(libs.androidx.test.ext.junit)
     androidTestImplementation(libs.espresso.core)

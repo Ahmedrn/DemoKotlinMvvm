@@ -3,6 +3,7 @@ pluginManagement {
         google()
         mavenCentral()
         gradlePluginPortal()
+        maven("https://plugins.gradle.org/m2/")
     }
 }
 dependencyResolutionManagement {
@@ -10,6 +11,8 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        gradlePluginPortal()
+        maven("https://plugins.gradle.org/m2/")
     }
 }
 

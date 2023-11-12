@@ -21,7 +21,9 @@ class MainViewModel @Inject constructor(private val getArticlesUseCase: GetArtic
     fun getArticles() {
         viewModelScope.launch {
             getArticlesUseCase()
-                .collect { _articlesFlow.value = it }
+                .collect {
+                    _articlesFlow.value = it
+                }
         }
     }
 

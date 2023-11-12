@@ -22,9 +22,9 @@ data class LocalArticle(
     fun mapToArticle() = Article(
         id ?: 0,
         title ?: "",
-        author ?: "",
         body ?: "",
-        imageUrl ?: ""
+        imageUrl ?: "",
+        author ?: ""
     )
 
 
