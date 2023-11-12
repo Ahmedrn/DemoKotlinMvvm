@@ -19,6 +19,8 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures.viewBinding = true
+
     buildTypes {
         release {
             isMinifyEnabled = false
@@ -54,6 +56,12 @@ dependencies {
     //Moshi
     implementation(libs.moshi)
     implementation(libs.moshiRetrofitConverter)
+    //ViewModel
+    implementation(libs.viewModel)
+    implementation(libs.activityKtx)
+    implementation(libs.coil)
+    implementation(libs.materialDesign)
+    implementation(libs.swipeRefreshLayout)
 
     testImplementation(libs.room)
     testImplementation(libs.junit)

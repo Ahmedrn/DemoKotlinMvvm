@@ -1,6 +1,6 @@
 package com.skom.demokotlinmvvm.domain
 
-class Article(
+data class Article(
     val id: Int,
     val title: String,
     val body: String,

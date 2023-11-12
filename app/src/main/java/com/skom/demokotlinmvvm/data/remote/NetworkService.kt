@@ -1,7 +1,15 @@
 package com.skom.demokotlinmvvm.data.remote
 
-class NetworkService {
+import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
+import retrofit2.http.GET
+
+interface NetworkService {
+
+    @GET("/DummyFoodiumApi/api/posts/")
+    suspend fun getArticles(): Response<List<RemoteArticle>>
+
     companion object {
-        const val API_URL = "https://patilshreyas.github.io/DummyFoodiumApi/api/posts/"
+        const val API_URL = "https://patilshreyas.github.io/"
     }
 }
