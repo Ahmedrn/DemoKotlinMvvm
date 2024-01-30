@@ -44,6 +44,7 @@ swipeRefreshLayout = "1.1.0"
 roomCompiler = "2.6.0"
 roomKtx = "2.6.0"
 roomRuntime = "2.6.0"
+mockk = "1.13.8"
 
 [libraries]
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
@@ -87,6 +88,8 @@ swipeRefreshLayout = { group = "androidx.swiperefreshlayout", name = "swiperefre
 roomCompiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
 roomKtx = { group = "androidx.room", name = "room-ktx", version.ref = "roomKtx" }
 roomRuntime = { group = "androidx.room", name = "room-runtime", version.ref = "roomRuntime" }
+mockk = { group = "io.mockk", name = "mockk", version.ref = "mockk" }
+mockkAndroid = { group = "io.mockk", name = "mockk-android", version.ref = "mockk" }
 
 [plugins]
 com-android-application = { id = "com.android.application", version.ref = "agp" }

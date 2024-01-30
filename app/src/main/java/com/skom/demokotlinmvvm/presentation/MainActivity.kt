@@ -15,9 +15,12 @@ import com.skom.demokotlinmvvm.R
 import com.skom.demokotlinmvvm.databinding.ActivityMainBinding
 import com.skom.demokotlinmvvm.utils.NetworkUtils
 import dagger.hilt.android.AndroidEntryPoint
+import kotlinx.coroutines.coroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
@@ -25,7 +28,6 @@ class MainActivity : AppCompatActivity() {
     private val mViewModel: MainViewModel by viewModels()
     private val mAdapter = ArticlesAdapter()
     private lateinit var mBinding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         mBinding = ActivityMainBinding.inflate(layoutInflater)

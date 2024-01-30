@@ -1,18 +1,13 @@
 package com.skom.demokotlinmvvm.presentation
 
-import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.skom.demokotlinmvvm.domain.Article
-import com.skom.demokotlinmvvm.domain.ArticleRepository
 import com.skom.demokotlinmvvm.domain.GetArticlesUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.catch
-import kotlinx.coroutines.flow.conflate
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 

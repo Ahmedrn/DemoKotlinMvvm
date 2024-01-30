@@ -5,12 +5,12 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flowOn
 
-abstract class BaseUseCase<out T, in Params> constructor(
-    private val threadExecutor: CoroutineDispatcher = Dispatchers.IO
-) {
-    protected abstract fun execute(params: Params? = null): Flow<T>
+abstract class BaseUseCase<out T> {
 
-    open operator fun invoke(params: Params? = null): Flow<T> =
-        execute(params).flowOn(threadExecutor)
+    private val threadExecutor: CoroutineDispatcher = Dispatchers.IO
+    
+    protected abstract suspend fun execute(): Flow<T>
+
+    suspend operator fun invoke(): Flow<T> = execute().flowOn(threadExecutor)
 
 }

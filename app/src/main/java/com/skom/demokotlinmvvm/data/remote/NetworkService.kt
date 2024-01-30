@@ -1,6 +1,5 @@
 package com.skom.demokotlinmvvm.data.remote
 
-import kotlinx.coroutines.flow.Flow
 import retrofit2.Response
 import retrofit2.http.GET
 

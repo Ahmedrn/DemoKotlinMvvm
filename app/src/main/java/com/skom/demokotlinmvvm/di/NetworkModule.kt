@@ -1,5 +1,6 @@
 package com.skom.demokotlinmvvm.di
 
+import com.skom.demokotlinmvvm.data.remote.NetworkDataSource
 import com.skom.demokotlinmvvm.data.remote.NetworkService
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
@@ -26,4 +27,18 @@ class NetworkModule {
         )
         .build()
         .create(NetworkService::class.java)
+
+//    @Singleton
+//    @Provides
+//    fun provideRetrofitService(): NetworkDataSource = Retrofit.Builder()
+//        .baseUrl(NetworkService.API_URL)
+//        .addConverterFactory(
+//            MoshiConverterFactory.create(
+//                Moshi.Builder().add(KotlinJsonAdapterFactory()).build()
+//            )
+//        )
+//        .build()
+//        .create(NetworkService::class.java).let { NetworkDataSource(it) }
+//
+
 }

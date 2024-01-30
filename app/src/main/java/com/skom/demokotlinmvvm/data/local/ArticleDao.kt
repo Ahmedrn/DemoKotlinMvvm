@@ -9,7 +9,7 @@ import kotlinx.coroutines.flow.Flow
 @Dao
 interface ArticleDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    suspend fun addPosts(posts: List<LocalArticle>)
+    suspend fun addArticles(posts: List<LocalArticle>)
 
     @Query("DELETE FROM ${LocalArticle.TABLE_NAME}")
     suspend fun deleteAllPosts()
@@ -18,5 +18,5 @@ interface ArticleDao {
     fun getPostById(postId: Int): Flow<LocalArticle>
 
     @Query("SELECT * FROM ${LocalArticle.TABLE_NAME}")
-    fun getAllPosts(): Flow<List<LocalArticle>>
+    fun getAllArticles(): Flow<List<LocalArticle>>
 }
